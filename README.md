@@ -12,7 +12,7 @@ The image is a dense dated broadsheet (1024x1024, 36 stories across 7 regions, e
 - **EU and Indonesia sign trade deal** — after 10 years of talks, 98.5% of tariffs scrapped for 730 million people (Reuters)
 - **COP31 nears a deal at last** — after all-night talks in Antalya, a new text goes to nearly 200 nations on Sunday (Reuters)
 
-The full story list with sources is in `stories.md`; the image is rendered by `build_image.py` (PIL, no network).
+The full story list with sources is in `stories.md`.
 
 ## Run it
 
@@ -20,7 +20,7 @@ The full story list with sources is in `stories.md`; the image is rendered by `b
 python3 main.py
 ```
 
-`main.py` (Python 3.13, standard library only) writes the pre-rendered broadsheet to `/output/entry.png`. It embeds the image as base64, so it needs no network and running it twice writes identical bytes.
+`main.py` (Python 3.13, standard library only — `os`, `struct`, `zlib`) draws the broadsheet itself at run time and writes it to `/output/entry.png`: a hand-designed bitmap font, the layout code, and a small deterministic PNG encoder, all in the one file. It needs no network and no other files, and running it twice writes identical bytes.
 
 ---
 
